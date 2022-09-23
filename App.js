@@ -13,10 +13,40 @@ export default class App extends Component {
 
   topclick = () => {
     this.setState({up: this.state.up - 10});
+    if(this.state.up <= -150) {
+      Alert.alert(  
+        'Player 1 Wins',  
+        'Press restart to restart game',  
+        [  
+          {text: 'Restart', onPress: () => this.setState({up: this.state.up + 150})},  
+          {  
+              text: 'Cancel',  
+              onPress: () => console.log('Cancel Pressed'),  
+              style: 'cancel',  
+          },   
+      ],  
+      {cancelable: false}  
+      )  
+    }
   };
 
   bottomclick = () => {
     this.setState({up: this.state.up + 10});
+    if(this.state.up >= 150) {
+      Alert.alert(  
+        'Player 2 Wins',  
+        'Press restart to restart game',  
+        [  
+          {text: 'Restart', onPress: () => this.setState({up: this.state.up - 150})},  
+          {  
+              text: 'Cancel',  
+              onPress: () => console.log('Cancel Pressed'),  
+              style: 'cancel',  
+          },   
+      ],  
+      {cancelable: false}  
+      )  
+    }
   };
 
   render() {
